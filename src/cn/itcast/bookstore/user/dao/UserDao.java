@@ -55,6 +55,33 @@ public class UserDao {
 		}
 	}
 	
-	
+	/**
+	 * 根据激活码查询用户
+	 */
+	public User findByCode(String code){
+		String sql = "select * from tb_user where code = ?";
+		User user = null;
+		try {
+			user = qr.query(sql, new BeanHandler<User>(User.class), code);
+			return user;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * 更新用户状态
+	 */
+	public int updateState(boolean state, String uid ){
+		Object[] params = { state , uid };
+		//数据库中Boolean 的 true 类型会被 转换成 tiny类型的 1
+		String sql = "update tb_user set state = ? where uid = ?";
+		try {
+			int res = qr.update(sql, params);
+			return res;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 	
 }

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.itcast.bookstore.user.domain.User;
+import cn.itcast.bookstore.user.service.UserException;
 import cn.itcast.bookstore.user.service.UserService;
 import cn.itcast.commons.CommonUtils;
 import cn.itcast.mail.Mail;
@@ -28,17 +29,6 @@ import cn.itcast.servlet.BaseServlet;
 public class UserServlet  extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 	private  UserService userService  = new UserService();
-	
-	/**
-	 * 激活功能
-	 * @param request
-	 * @return 
-	 * @since [产品/模块版本]
-	 */
-	public String active(HttpServletRequest request , HttpServletResponse response)  throws ServletException, IOException{
-		System.out.println("您激活了！");
-		return "";
-	}
 	
 	public 	String regist(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		User form = CommonUtils.toBean(request.getParameterMap(), User.class); 
@@ -133,5 +123,31 @@ public class UserServlet  extends BaseServlet {
 		 */
 		request.setAttribute("msg", "恭喜注册成功，请马上到邮箱激活");
 		return "f:/jsps/msg.jsp";
+	}
+	
+	/**
+	 * 激活
+	 * @author kenan 2018年1月28日 下午5:33:11
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException 
+	 * @since [产品/模块版本]
+	 */
+	public String active(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		String code = request.getParameter("code");
+		UserService userService = new UserService();
+		//激活
+		try {
+			userService.active(code);
+			//转发成功信息到msg页面
+			request.setAttribute("msg", "恭喜您已激活！,请登录!");
+		} catch (UserException e) {
+			//转发错误信息到列表页
+			request.setAttribute("msg", e.getMessage());
+		}
+		return "f:/jsps/msg.jsp";
+		
 	}
 }

@@ -21,4 +21,19 @@ public class UserService {
 		//添加用户
 		userDao.addUser(form);
 	}
+	
+	/**
+	 * 邮箱激活
+	 * @throws UserException 
+	 */
+	public void active(String code) throws UserException{
+		User user = userDao.findByCode(code);
+		if(user == null ) throw new UserException("你的激活码无效fla！");
+		//校验用户状态是否为激活，防止重复激活
+		boolean flag = user.isState();
+		if(flag) throw new UserException("已经激活，请勿重复激活");
+		//激活用户
+		userDao.updateState(true,user.getUid());
+	}
+	
 }
