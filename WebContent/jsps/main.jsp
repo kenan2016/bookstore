@@ -49,7 +49,8 @@
 	</tr>
 	<tr>
 		<td width="120" style="padding:5px;" align="center" valign="top">
-			<iframe frameborder="0" width="120" src="<c:url value='/jsps/left.jsp'/>" name="left"></iframe>
+		<!-- main过一下CategoryServlet 请求数据然后转发到left页面 -->
+			<iframe frameborder="0" width="120" src="<c:url value='/CategoryServlet?method=findAll'/>" name="left"></iframe>
 		</td>
 		<td>
 			<iframe frameborder="0" src="<c:url value='/jsps/body.jsp'/>" name="body"></iframe>

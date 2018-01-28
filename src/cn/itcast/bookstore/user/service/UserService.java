@@ -1,5 +1,7 @@
 package cn.itcast.bookstore.user.service;
 
+import java.util.List;
+
 import cn.itcast.bookstore.user.dao.UserDao;
 import cn.itcast.bookstore.user.domain.User;
 /**user业务层
@@ -34,6 +36,24 @@ public class UserService {
 		if(flag) throw new UserException("已经激活，请勿重复激活");
 		//激活用户
 		userDao.updateState(true,user.getUid());
+	}
+
+	/**
+	 * 用户登录
+	 * @throws UserException 
+	 */
+	public User login(User form) throws UserException {
+		User user = userDao.findByUsername(form.getUsername());
+		if(user == null){
+			throw new UserException("用户名不存在");
+		}
+		if(!user.getPassword().equals(form.getPassword())){
+			throw new UserException("密码错误");
+		}
+		if(!user.isState()){
+			throw new UserException("用户还未激活请到邮箱激活");
+		}
+		return user;
 	}
 	
 }
