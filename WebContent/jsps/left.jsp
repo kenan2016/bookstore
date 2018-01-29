@@ -25,7 +25,7 @@
 			background: #87CEFA; 
 			margin: 3px; 
 			padding: 3px;
-		}
+		} 
 		a {
 			text-decoration: none;
 		}

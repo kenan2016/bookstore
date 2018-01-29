@@ -10,7 +10,7 @@ import cn.itcast.jdbc.TxQueryRunner;
 
 public class CategoryDao {
 	private TxQueryRunner qr = new TxQueryRunner();
-	
+	 
 	/**查询所有分类
 	 * @author kenan 2018年1月28日 下午8:56:12 
 	 * @since [产品/模块版本]

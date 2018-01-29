@@ -19,7 +19,7 @@ public class CategoryServlet  extends BaseServlet{
 	public String  findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		try {
 			List<Category> list =  categoryService.findAll();
-			request.setAttribute("list",list);
+	 		request.setAttribute("list",list);
 		} catch (Exception e) {
 			request.setAttribute("msg", "查询分类出错！");
 		}

@@ -20,7 +20,7 @@ public class BookService {
 
 	public List<Book> findByCategory(String cid){
 		List<Book> list = bookDao.findByCategory(cid);
-		return list;
+		return list; 
 	}
 
 	/**

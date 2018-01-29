@@ -44,7 +44,7 @@ public class BookDao {
 	 * 根据案件bid 加载图示件详情
 	 * @author kenan 2018年1月30日 上午12:15:07
 	 * @param bid
-	 * @return 
+	 * @return  
 	 * @since [产品/模块版本]
 	 */
 	public Book findByBid(String bid) {

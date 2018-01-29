@@ -5,7 +5,7 @@ public class Category {
 	private String cname;
 	public String getCid() {
 		return cid;
-	}
+	} 
 	public void setCid(String cid) {
 		this.cid = cid;
 	}

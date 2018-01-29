@@ -54,7 +54,7 @@
   <body>
   <div>
     <img src="<c:url value='${book.image}'/>" border="0"/>
-  </div>
+  </div> 
   <ul>
     <li>书名：${book.bname}</li>
     <li>作者：${book.author}</li>

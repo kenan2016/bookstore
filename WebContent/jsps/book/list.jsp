@@ -27,7 +27,7 @@
 		text-align: center;
 		float: left;
 	}
-</style>
+</style> 
   </head>
   
   <body>

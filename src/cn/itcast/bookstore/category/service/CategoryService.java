@@ -11,4 +11,4 @@ public class CategoryService {
 		List<Category> list = categoryDao.findAll();
 		return list;
 	}
-}
+} 

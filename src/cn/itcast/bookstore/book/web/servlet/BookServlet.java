@@ -49,7 +49,7 @@ public class BookServlet  extends BaseServlet{
 		//转发
 		request.setAttribute("list", list);
 		return "f:jsps/book/list.jsp";
-	}
+	} 
 	
 	/**
 	 * 根据id查看图书 详情

@@ -1,6 +1,6 @@
 package cn.itcast.bookstore.book.domain;
 
-public class Book {
+public class Book { 
 	private String bid;
 	private String bname;
 	private double price;
