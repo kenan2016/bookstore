@@ -1,5 +1,7 @@
 package cn.itcast.bookstore.cart.domain;
 
+import java.math.BigDecimal;
+
 import cn.itcast.bookstore.book.domain.Book;
 
 /**
@@ -13,8 +15,11 @@ public class Cartitem {
 	private int count;//商品数量
 	
 	//通常每一个条目都还会有一个小计（是根据数量和商品价格计算出来的）
+	//防止二进制运算误差 问题
 	public double getSubtatal(){
-		return book.getPrice() * count;
+		BigDecimal d1= new BigDecimal(book.getPrice()+ ""); 
+		BigDecimal d2= new BigDecimal(count + ""); 
+		return d1.multiply(d2).doubleValue();
 	}
 	
 
