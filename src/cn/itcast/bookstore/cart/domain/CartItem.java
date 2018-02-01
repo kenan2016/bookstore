@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import cn.itcast.bookstore.book.domain.Book;
 
-/**
+/** 
  * 条目实体类
  * @author kenan 
  * @see        [相关类/方法] 
