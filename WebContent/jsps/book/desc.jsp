@@ -60,8 +60,11 @@
     <li>作者：${book.author}</li>
     <li>单价：${book.price}</li>
   </ul>
-  <form id="form" action="<c:url value='/jsps/cart/list.jsp'/>" method="post">
+  <!-- 添加到购物车的form -->
+  <form id="form" action="<c:url value='CartServlet'/>" method="post">
   	<input type="text" size="3" name="count" value="1"/>
+  	<input type="hidden" name="method" value="add"/>
+  	<input type="hidden" name="bid" value="${book.bid }"/>
   </form>
   <a href="javascript:document.getElementById('form').submit();"></a>
   </body>

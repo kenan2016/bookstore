@@ -12,7 +12,7 @@ import java.util.Map;
 public class Cart {
 	//创建购物车里的条目
 	//注意购物车里 的数据显示时是有顺序的，因此 需要用 LinkedHashMap
-	private Map<String,Cartitem> map =  new LinkedHashMap<String, Cartitem>();
+	private Map<String,CartItem> map =  new LinkedHashMap<String, CartItem>();
 	
 	//合计
 	//合计等于所有条目的小计之和
@@ -21,20 +21,20 @@ public class Cart {
 		//防止浮点数计算出错
 		BigDecimal total  = new BigDecimal(0+"");
 		
-		for(Cartitem cartItem : map.values()){
-			BigDecimal subtotal  = new BigDecimal( cartItem.getSubtatal() + "");
+		for(CartItem cartItem : map.values()){
+			BigDecimal subtotal  = new BigDecimal( cartItem.getSubtotal() + "");
 			total = total.add(subtotal);
 		}
 		return total.doubleValue();
 	}
-	
+	 
 	//购物车对其条目的操作功能
 	
 	//添加条目到购物车
-	public void add(Cartitem cartItem){
+	public void add(CartItem cartItem){
 		//添加条目:当某个条目存在时只要修改老条目的的 数量（根据书的Id去标识某个条目）
 		if(map.containsKey(cartItem.getBook().getBid())){//已存在 
-			Cartitem _cartItem = map.get(cartItem.getBook().getBid());//获取原条目
+			CartItem _cartItem = map.get(cartItem.getBook().getBid());//获取原条目
 			//修改老条目数量
 			_cartItem.setCount(_cartItem.getCount() + cartItem.getCount());
 			map.put(_cartItem.getBook().getBid(), _cartItem);
@@ -56,7 +56,7 @@ public class Cart {
 	}
 	
 	//获取所有条目
-	public Collection<Cartitem> getCartItems(){
+	public Collection<CartItem> getCartItems(){
 		//我们其实就是要 获取所有的值 
 		return map.values();
 	}

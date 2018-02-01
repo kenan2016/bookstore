@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.itcast.bookstore.cart.domain.Cart;
 import cn.itcast.bookstore.user.domain.User;
 import cn.itcast.bookstore.user.service.UserException;
 import cn.itcast.bookstore.user.service.UserService;
@@ -156,6 +157,8 @@ public class UserServlet extends BaseServlet {
 			request.setAttribute("msg", "登陸成功!");
 			//用户保存到user
 			request.getSession().setAttribute("session_user", user);
+			//登录成功会后向session中添加一个购物车
+			request.getSession().setAttribute("cart", new Cart());
 			//一般登录成功后重定向到主页
 			return "r:/index.jsp";
 		} catch (UserException e) {
