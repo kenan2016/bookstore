@@ -14,11 +14,12 @@ public class OrderDao {
 	 */
 	public void addOrder(Order order){
 		try {
-			String sql = "insert into orders values(?,?,?,?,?)";
-			//注意这里要处理一下util的 date要转换成SQL的timeStamp
+			String sql = "insert into orders values(?,?,?,?,?,?)";
 			Timestamp timestamp = new Timestamp(order.getOrdertime().getTime());
-			Object[] params = {order.getOid(),timestamp , order.getTotal(), order.getState(), order.getOwner().getUid(), order.getAddress()};
-			
+			Object[] params = {order.getOid(), timestamp, order.getTotal(),
+					order.getState(), order.getOwner().getUid(),
+					order.getAddress()};
+			qr.update(sql, params);
 		} catch(Exception e){
 			throw new RuntimeException();
 		}
@@ -35,7 +36,7 @@ public class OrderDao {
 		try {//是params一个二维数组object[][]
 			//是多个一位数组
 			//每个一维数组都与sql在一起执行一次，多个一维数组就执行多次
-			String sql = "insert into orderitem values(?,?,?,?,?,?)";
+			String sql = "insert into orderitem values(?,?,?,?,?)";
 			//我们需要把orderItemList 转换成二维数组
 			/** *
 			 * 转换规则 把一个orderItem 转换成一个一维数组

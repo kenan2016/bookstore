@@ -93,7 +93,7 @@ public class OrderServlet extends BaseServlet {
 		 * 4 保存order 到request域中，转发到/jsp/order/desc.jsp
 		 */
 		request.setAttribute("order", order);
-		return "f:/jsp/order/desc.jsp";
+		return "f:/jsps/order/desc.jsp";
 		
 	}
 

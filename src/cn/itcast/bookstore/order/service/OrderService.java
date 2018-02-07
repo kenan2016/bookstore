@@ -29,7 +29,6 @@ public class OrderService {
 			} catch (SQLException e1) {
 				throw new RuntimeException(e1);
 			}
-			throw new RuntimeException(e);
 		}
 	}
 }
